@@ -1,11 +1,20 @@
-@(tasks: List[String], user: String)
+@(tasks: List[String], user: String)(implicit flash:Flash, request: RequestHeader)
 
 @main("Task List") {
-  <h1>Task List for @user</h1>
-  <ul>
-    @for(task <- tasks) {
-      <li>@task</li>
+<h1>Task List for @user</h1>
+  @for((task,i) <- tasks.zipWithIndex) { <form action="delete" method="post">
+    <span> @task </span>
+    @helper.CSRF.formField
+    <input hidden name="index" value="@i" />
+    <input type="submit" name="delete" value="Remove" /><br/><br/>
+    </form>
+
     }
-  </ul>
-  <a href="logout"><button>Logout</button></a>
+
+<form action="addTask" method="post">
+  @helper.CSRF.formField
+  <input type="text" name="task">
+  <input type="submit" value="Add" />
+</form>
+<a href="logout"><button>Logout</button></a>
 }

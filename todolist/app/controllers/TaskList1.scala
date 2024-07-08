@@ -4,14 +4,16 @@ import javax.inject._
 import play.api.mvc.ControllerComponents
 import play.api.mvc.BaseController
 import Models.TaskListInMemonryModel
+import views.html.defaultpages.error
 
 @Singleton
 class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
     extends BaseController {
 
-  def taskList = Action {implicit request =>
-    val tasks = TaskListInMemonryModel.getTasks("Mark")
-    request.session.get("Username") match {
+  def taskList = Action { implicit request =>
+    val user = request.session.get("Username")
+    val tasks = TaskListInMemonryModel.getTasks(user.head)
+    user match {
       case Some(user) =>
         Ok(views.html.taskList1(tasks, user))
       case None =>
@@ -21,15 +23,15 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
 
   }
 
-  def login() = Action {implicit request=>
+  def login() = Action { implicit request =>
     Ok(views.html.login1())
   }
 
-  def logout() = Action {implicit request=>
+  def logout() = Action { implicit request =>
     Ok(views.html.login1()).withNewSession
   }
 
-  def signup() = Action {implicit request =>
+  def signup() = Action { implicit request =>
     {
       val formData = request.body.asFormUrlEncoded
       formData.map { args =>
@@ -38,7 +40,8 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
         if (TaskListInMemonryModel.createUser(username.head, password.head)) {
           Redirect(routes.TaskList1.login())
         } else {
-          Ok("user already exists")
+          Redirect(routes.TaskList1.login())
+            .flashing("error" -> "User already exists")
         }
       }
     }.getOrElse {
@@ -49,7 +52,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
     Ok("Inside validation")
   }
 
-  def validateLogin() = Action {implicit request =>
+  def validateLogin() = Action { implicit request =>
     val formData = request.body.asFormUrlEncoded
     formData
       .map { args =>
@@ -59,7 +62,8 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
           Redirect(routes.TaskList1.taskList())
             .withSession("Username" -> username.head)
         } else {
-          Ok("Incvalid user and pass")
+          Redirect(routes.TaskList1.login())
+            .flashing("error" -> "Invalid username or password")
         }
       }
       .getOrElse {
@@ -67,6 +71,52 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
       }
   }
 
+  def addTask() = Action { implicit request =>
+    val formData = request.body.asFormUrlEncoded
+    val userOpt = request.session.get("Username")
+
+    userOpt match {
+      case Some(user) =>
+        formData
+          .map { args =>
+            val task = args("task").head.toString
+            TaskListInMemonryModel.addTask(user, task)
+            Redirect(
+              routes.TaskList1.taskList()
+            )
+          }
+          .getOrElse {
+            BadRequest("Form data not found")
+          }
+      case None =>
+        Redirect(routes.TaskList1.login())
+          .flashing("error" -> "You need to be logged in to add tasks")
+    }
+  }
+
+  def delete() = Action { implicit request =>
+    val formData = request.body.asFormUrlEncoded
+    val userOpt = request.session.get("Username")
+    userOpt match {
+      case Some(user) =>
+        formData
+          .map { args =>
+            val task = args("index").head.toInt
+            TaskListInMemonryModel.deleteTask(user, task)
+            Redirect(
+              routes.TaskList1.taskList()
+            )
+          }
+          .getOrElse {
+            BadRequest("Form data not found")
+          }
+      case None =>
+        Redirect(routes.TaskList1.login())
+          .flashing(
+            "error" -> "You need to be logged in to perform operation"
+          )
+    }
+  }
   def product(productType: String, id: Int) = Action {
     Ok(s"Product trype : $productType , Product Num : $id")
   }

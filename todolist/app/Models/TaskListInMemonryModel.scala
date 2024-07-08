@@ -11,9 +11,8 @@ object TaskListInMemonryModel {
   }
   def createUser(username: String, password: String): Boolean = {
     if (user.contains(username)) {
-        false
-    }
-    else {
+      false
+    } else {
       user(username) = password
       true
     }
@@ -21,9 +20,16 @@ object TaskListInMemonryModel {
   def getTasks(username: String): List[String] = {
     task.get(username).getOrElse(Nil)
   }
-//   def addTask(username:String,task:String):Unit={
-//   }
-//   def removeTask(username:String, index:Int):Boolean={
-
-//   }
+  def addTask(username: String, taskItem: String): Unit = {
+    val tasks = task.getOrElse(username, Nil)
+    task(username) = taskItem :: tasks
+  }
+  def deleteTask(username:String, index:Int):Boolean={
+    val tasks = task.getOrElse(username, Nil)
+    if(index>=0 || index<tasks.length){
+      task(username) = task(username).patch(index,Nil,1)
+      true
+    }
+    false
+  }
 }

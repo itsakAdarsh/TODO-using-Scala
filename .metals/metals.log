@@ -1308,3 +1308,56 @@ WARNING: Unmatched cancel notification for request id 198
 2024.07.08 17:43:12 INFO  shutting down Metals
 2024.07.08 17:43:12 INFO  Shut down connection with build server.
 2024.07.08 17:43:12 INFO  Exiting server
+2024.07.08 17:43:24 INFO  Started: Metals version 1.3.2 in folders 'A:\developement\scala project\todo' for client Visual Studio Code 1.91.0.
+SLF4J(W): Class path contains multiple SLF4J providers.
+SLF4J(W): Found provider [scribe.slf4j.ScribeServiceProvider@52a695fd]
+SLF4J(W): Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@275d274f]
+SLF4J(W): See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J(I): Actual provider is of type [scribe.slf4j.ScribeServiceProvider@52a695fd]
+2024.07.08 17:43:24 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.07.08 17:43:25 INFO  Attempting to connect to the build server...
+2024.07.08 17:43:25 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at A:\developement\scala project\todo\.metals\bsp.trace.json or C:\Users\adars\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2024.07.08 17:43:25 INFO  time: Connected to build server in 0.19s
+2024.07.08 17:43:25 INFO  Connected to Build server: Bloop v1.5.18
+2024.07.08 17:43:28 INFO  time: indexed workspace in 3.19s
+2024.07.08 17:43:29 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:43:29 INFO  time: compiled root in 0.4s
+2024.07.08 17:43:29 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:43:29 INFO  time: compiled root in 0.27s
+Jul 08, 2024 5:43:56 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 33
+Jul 08, 2024 5:44:00 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 34
+2024.07.08 17:44:04 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:44:04 INFO  time: compiled root in 0.24s
+2024.07.08 17:47:04 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:47:04 INFO  time: compiled root in 0.75s
+2024.07.08 17:47:29 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:47:29 INFO  time: compiled root in 0.27s
+2024.07.08 17:48:31 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:48:31 INFO  time: compiled root in 0.34s
+2024.07.08 17:48:34 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:48:34 INFO  time: compiled root in 0.24s
+2024.07.08 17:49:06 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:49:06 INFO  time: compiled root in 0.31s
+2024.07.08 17:49:45 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:49:45 INFO  time: compiled root in 0.2s
+2024.07.08 17:49:56 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:49:56 INFO  time: compiled root in 0.24s
+2024.07.08 17:50:18 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:50:21 WARN  javac exited with exit code 1
+2024.07.08 17:50:21 INFO  time: compiled root in 3.05s
+2024.07.08 17:50:46 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:50:49 WARN  javac exited with exit code 1
+2024.07.08 17:50:49 INFO  time: compiled root in 2.63s
+2024.07.08 17:55:23 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:55:26 WARN  javac exited with exit code 1
+2024.07.08 17:55:26 INFO  time: compiled root in 3.67s
+2024.07.08 17:56:34 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 17:56:37 WARN  javac exited with exit code 1
+2024.07.08 17:56:37 INFO  time: compiled root in 2.42s
+Jul 08, 2024 5:57:33 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 318
+2024.07.08 18:00:24 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 18:00:28 WARN  javac exited with exit code 1
+2024.07.08 18:00:28 INFO  time: compiled root in 3.46s

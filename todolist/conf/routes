@@ -12,9 +12,13 @@ GET     /login                      controllers.TaskList1.login()
 GET     /validateLogin1             controllers.TaskList1.validateLogin1()
 GET     /logout                     controllers.TaskList1.logout()
 
-+ nocsrf
+
 POST     /validateLogin             controllers.TaskList1.validateLogin()
-+ nocsrf
+POST     /addTask                   controllers.TaskList1.addTask()
+POST     /delete                    controllers.TaskList1.delete()
+
+
+
 
 POST    /signup                     controllers.TaskList1.signup()
 
