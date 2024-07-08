@@ -8,25 +8,6 @@ This is a Task List application built using the Play Framework in Scala. It prov
 - sbt (Scala Build Tool)
 - Play Framework
 
-## Project Structure
-├── app
-│ ├── controllers
-│ │ └── TaskList1.scala
-│ ├── models
-│ │ └── TaskListInMemoryModel.scala
-│ ├── views
-│ │ ├── login1.scala.html
-│ │ └── taskList1.scala.html
-├── conf
-│ ├── application.conf
-│ ├── logback.xml
-│ └── routes
-├── public
-│ ├── images
-│ ├── javascripts
-│ └── stylesheets
-└── build.sbt
-
 
 ## Installation
 
