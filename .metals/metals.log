@@ -2045,3 +2045,14 @@ WARNING: Unmatched cancel notification for request id 4926
 2024.07.08 19:40:24 INFO  compiling root (12 scala sources and 1 java source)
 2024.07.08 19:40:28 WARN  javac exited with exit code 1
 2024.07.08 19:40:28 INFO  time: compiled root in 4s
+Jul 08, 2024 7:42:29 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4984
+2024.07.08 19:44:07 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 19:44:09 WARN  javac exited with exit code 1
+2024.07.08 19:44:09 INFO  time: compiled root in 2.4s
+2024.07.08 19:44:09 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 19:44:11 WARN  javac exited with exit code 1
+2024.07.08 19:44:11 INFO  time: compiled root in 1.42s
+2024.07.08 19:44:53 INFO  compiling root (12 scala sources and 1 java source)
+2024.07.08 19:44:55 WARN  javac exited with exit code 1
+2024.07.08 19:44:55 INFO  time: compiled root in 2.08s
