@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 import play.api.mvc.ControllerComponents
 import play.api.mvc.BaseController
-import Models.TaskListInMemonryModel
+import Models.TaskListInMemoryModel
 import views.html.defaultpages.error
 
 @Singleton
@@ -12,7 +12,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
 
   def taskList = Action { implicit request =>
     val user = request.session.get("Username")
-    val tasks = TaskListInMemonryModel.getTasks(user.head)
+    val tasks = TaskListInMemoryModel.getTasks(user.head)
     user match {
       case Some(user) =>
         Ok(views.html.taskList1(tasks, user))
@@ -37,7 +37,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
       formData.map { args =>
         val username = args.get("username").head
         val password = args.get("password").head
-        if (TaskListInMemonryModel.createUser(username.head, password.head)) {
+        if (TaskListInMemoryModel.createUser(username.head, password.head)) {
           Redirect(routes.TaskList1.login())
         } else {
           Redirect(routes.TaskList1.login())
@@ -58,7 +58,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
       .map { args =>
         val username = args.get("username").head
         val password = args.get("password").head
-        if (TaskListInMemonryModel.validateUser(username.head, password.head)) {
+        if (TaskListInMemoryModel.validateUser(username.head, password.head)) {
           Redirect(routes.TaskList1.taskList())
             .withSession("Username" -> username.head)
         } else {
@@ -80,7 +80,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
         formData
           .map { args =>
             val task = args("task").head.toString
-            TaskListInMemonryModel.addTask(user, task)
+            TaskListInMemoryModel.addTask(user, task)
             Redirect(
               routes.TaskList1.taskList()
             )
@@ -102,7 +102,7 @@ class TaskList1 @Inject() (val controllerComponents: ControllerComponents)
         formData
           .map { args =>
             val task = args("index").head.toInt
-            TaskListInMemonryModel.deleteTask(user, task)
+            TaskListInMemoryModel.deleteTask(user, task)
             Redirect(
               routes.TaskList1.taskList()
             )
